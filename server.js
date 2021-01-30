@@ -27,6 +27,10 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
+//app.get('/*', (req, res) => {
+//  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+//});
+
 app.post('/register', register.handleRegister(knex, bcrypt));
 app.post('/signin', signin.handleSignIn(knex, bcrypt));
 app.post('/imageurl', image.handleApiCall(clarifai));
