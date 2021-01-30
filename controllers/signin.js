@@ -17,7 +17,7 @@ const handleSignIn = (knex, bcrypt) => ((req, res) => {
                 res.status(400).json('wrong credentials')
             }
         })
-        .catch(err => res.status(400).json('wrong credentials'))
+        .catch(err => res.status(400).json('unable to signin'))
 })
 
 module.exports = {
