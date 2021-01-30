@@ -3,11 +3,12 @@ const bcrypt = require('bcrypt-nodejs')
 const cors = require('cors')
 const clarifai = require('clarifai')
 const path = require('path')
-const port = process.env.PORT || 3000
 
 const register = require('./controllers/register')
 const signin = require('./controllers/signin')
 const image = require('./controllers/image')
+
+const PORT = process.env.PORT || 5000
 
 const knex = require('knex')({
   client: 'pg',
@@ -23,6 +24,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.post('/register', register.handleRegister(knex, bcrypt));
@@ -30,6 +32,6 @@ app.post('/signin', signin.handleSignIn(knex, bcrypt));
 app.post('/imageurl', image.handleApiCall(clarifai));
 app.put('/image', image.handleImage(knex));
 
-app.listen(port, () => {
-  console.log('app is running on port ' + port);
+app.listen(PORT, () => {
+  console.log('app is running on port ' + PORT);
 })
