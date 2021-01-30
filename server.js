@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt-nodejs')
 const cors = require('cors')
 const clarifai = require('clarifai')
 const path = require('path')
+const port = process.env.PORT || 3000
 
 const register = require('./controllers/register')
 const signin = require('./controllers/signin')
@@ -29,6 +30,6 @@ app.post('/signin', signin.handleSignIn(knex, bcrypt));
 app.post('/imageurl', image.handleApiCall(clarifai));
 app.put('/image', image.handleImage(knex));
 
-app.listen(process.env.PORT || 5000, () => {
-  console.log(`app is running on port ${process.env.PORT}`);
+app.listen(port, () => {
+  console.log('app is running on port ' + port);
 })
