@@ -97,7 +97,7 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
-    fetch('https://rocky-caverns-46196.herokuapp.com/imageurl', {
+    fetch('https://face-recognition-fullstack.herokuapp.com/imageurl', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -108,7 +108,7 @@ class App extends Component {
       .then(response => {
         console.log('response:', response)
         if (response) {
-          fetch('https://rocky-caverns-46196.herokuapp.com/image', {
+          fetch('https://face-recognition-fullstack.herokuapp.com/image', {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
