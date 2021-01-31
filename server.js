@@ -10,15 +10,23 @@ const image = require('./controllers/image')
 
 const PORT = process.env.PORT || 5000
 
+/*const knex = require('knex')({
+  client: 'pg',
+  connection: {
+    host: 'postgresql-crystalline-04284',
+    user: 'postgres',
+    password: '',
+    database: 'face-recognition'
+  }
+});*/
+
 const knex = require('knex')({
   client: 'pg',
   connection: {
-    host: '127.0.0.1',
-    user: 'postgres',
-    password: 'password',
-    database: 'face-recognition'
+    host: process.env.DATABASE_URL,
+    ssl: true
   }
-});
+})
 
 const app = express();
 
